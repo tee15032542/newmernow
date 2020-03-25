@@ -12,7 +12,7 @@ const InputStyle = {
 
 };
 var y, error, exact;
-class Forwardh extends Component {
+class Forwardh2 extends Component {
     constructor() {
         super();
         this.state = {
@@ -30,19 +30,19 @@ class Forwardh extends Component {
         });
 
     }
-    forwardh(x, h, degree) {
+    forwardh2(x, h, degree) {
         switch (degree) {
             case 1:
-                y = (this.func(x+(1*h)) - this.func(x)) / h
+                y = (-this.func(x+(2*h)) + 4*this.func(x+(1*h)) - 3*this.func(x)) / (2*h)
                 break;
             case 2:
-                y = (this.func(x+(2*h)) - 2*this.func(x+(1*h)) + this.func(x)) / Math.pow(h, 2)
+                y = (-this.func(x+(3*h)) + 4*this.func(x+(2*h)) - 5*this.func(x+(1*h)) + 2*this.func(x)) / Math.pow(h, 2)
                 break;
             case 3:
-                y = (this.func(x+(3*h)) - 3*this.func(x+(2*h)) + 3*this.func(x+(1*h)) - this.func(x)) / Math.pow(h, 3)
+                y = (-3*this.func(x+(4*h)) + 14*this.func(x+(3*h)) - 24*this.func(x+(2*h)) + 18*this.func(x+(1*h)) - 5*this.func(x)) / (2*Math.pow(h, 3))
                 break;
             default:
-                y = (this.func(x+(4*h)) - 4*this.func(x+(3*h)) + 6*this.func(x+(2*h)) - 4*this.func(x+(1*h)) + this.func(x)) / Math.pow(h, 4) 
+                y = (-2*this.func(x+(5*h)) + 11*this.func(x+(4*h)) - 24*this.func(x+(3*h)) + 26*this.func(x+(2*h)) - 14*this.func(x+(1*h)) + 3*this.func(x)) / Math.pow(h, 4) 
         }
         exact = this.funcDiff(x, degree)
         error = Math.abs((y - exact) / y)*100
@@ -69,7 +69,7 @@ class Forwardh extends Component {
     render() {
         return(
             <div style={{padding: "30px" }}>
-                <h2 style={{color: "black", fontWeight: "bold"}}>Forward Divided-Differences O(h)</h2>
+                <h2 style={{color: "black", fontWeight: "bold"}}>Forward Divided-Differences O(h<sup>2</sup>)</h2>
                 <div style={{float:"left"}}>
                     <Card
                     bordered={true}
@@ -82,7 +82,7 @@ class Forwardh extends Component {
                         <h2>X</h2><Input size="large" name="x" style={InputStyle}></Input>
                         <h2>H</h2><Input size="large" name="h" style={InputStyle}></Input><br/><br/>
                         <Button id="submit_button" onClick= {
-                                ()=>this.forwardh(parseFloat(this.state.x), parseFloat(this.state.h), parseInt(this.state.degree))
+                                ()=>this.forwardh2(parseFloat(this.state.x), parseFloat(this.state.h), parseInt(this.state.degree))
                             }  
                         style={{background: "#4caf50", color: "white", fontSize: "20px"}}>Submit</Button>
                         
@@ -95,7 +95,7 @@ class Forwardh extends Component {
                         id="outputCard"
                         >
                             <p style={{fontSize: "24px", fontWeight: "bold"}}>
-                                Approximate = {y.toFixed(8)}<br/>
+                                Approximate = {y}<br/>
                                 Exact = {exact.toFixed(8)}<br/>
                                 Error(ε) = {error.toFixed(4)}%<br/>
                             </p>
@@ -106,4 +106,4 @@ class Forwardh extends Component {
         );
     }
 }
-export default Forwardh;
+export default Forwardh2;

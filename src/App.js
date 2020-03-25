@@ -14,10 +14,15 @@ import secant from './page/Root/Secant';
 
 import cramer from './page/Linear Algebra/Cramer';
 
+import compositesimpson from './page/Integation/compositesimpson';
+import compositetrapzoidal from './page/Integation/compositetrapzoidal';
+
 import Backwardh from './page/Diff/BackwardH';
 import Backwardh2 from './page/Diff/BackwardH2';
-
-
+import Central from './page/Diff/centralh';
+import Central4 from './page/Diff/centralh4';
+import forwardh from './page/Diff/forwardh';
+import forwardh2 from './page/Diff/forwardh2';
 import { Layout, Menu, Breadcrumb  } from 'antd';
 import Newton from './page/Root/Newton-raphson';
 import Secant from './page/Root/Secant';
@@ -40,8 +45,7 @@ class App extends Component{
               >
                 <SubMenu key="root_submenu" title={<span>Root of Equation</span>}>
                   <Menu.Item key="menu_bisection" >Bisection<Link to="/bisection" /></Menu.Item>
-                  <Menu.Item key="menu_graphical" >Graphical<Link to="/graphical" /></Menu.Item>
-                  
+                
                   <Menu.Item key="menu_false">False Position<Link to="/false" /></Menu.Item>
                   <Menu.Item key="menu_onepoint">One-Point Iteration<Link to="/one_point" /></Menu.Item>
                   <Menu.Item key="menu_newton">Newton-Raphson<Link to ="/newton" /></Menu.Item>
@@ -69,22 +73,18 @@ class App extends Component{
                   <Menu.Item key="menu_multiple">Multiple Linear Regression</Menu.Item>
                 </SubMenu>
                 <SubMenu key="integrate_submenu" title={<span>Integration</span>}>
-                  <Menu.Item key="menu_compositeTrapzoidal">Composite Trapezoidal Rule</Menu.Item>
-                  <Menu.Item key="menu_compositeSimpson">Composite Simpson's Rule</Menu.Item>
+                  <Menu.Item key="menu_compositeTrapzoidal">Composite Trapezoidal Rule<Link to ="/compositetrapzoidal"/></Menu.Item>
+                  <Menu.Item key="menu_compositeSimpson">Composite Simpson's Rule<Link to ="/compositesimpson"/></Menu.Item>
                 </SubMenu>
                 <SubMenu key="diff_submenu" title={<span>Differentiation</span>}>
-                  <Menu.Item key="menu_forwardh">Forward Divided-Differences O(h)</Menu.Item>
+                  <Menu.Item key="menu_forwardh">Forward Divided-Differences O(h)<Link to ="/forwardh"/></Menu.Item>
                   <Menu.Item key="menu_backwardh">Backward Divided-Differences O(h)<Link to ="/Backwardh"/></Menu.Item>
-                  <Menu.Item key="menu_centralh">Central Divided-Differences O(h{<sup>2</sup>})</Menu.Item>
-                  <Menu.Item key="menu_forward2h">Forward Divided-Differences O(h{<sup>2</sup>})</Menu.Item>
+                  <Menu.Item key="menu_centralh">Central Divided-Differences O(h{<sup>2</sup>})<Link to ="/centralh"/></Menu.Item>
+                  <Menu.Item key="menu_forward2h">Forward Divided-Differences O(h{<sup>2</sup>})<Link to ="/forwardh2"/></Menu.Item>
                   <Menu.Item key="menu_backward2h">Backward Divided-Differences O(h{<sup>2</sup>})<Link to ="/Backwardh2"/></Menu.Item>
-                  <Menu.Item key="menu_central2h">Central Divided-Differences O(h{<sup>4</sup>})</Menu.Item>
+                  <Menu.Item key="menu_central2h">Central Divided-Differences O(h{<sup>4</sup>})<Link to ="/centralh4"/></Menu.Item>
                 </SubMenu>
-                <SubMenu key="de_submenu" title={<span>Ordinary Differential Equation</span>}>
-                  <Menu.Item key="menu_euler">Euler's Method</Menu.Item>
-                  <Menu.Item key="menu_heun">Heun's Method</Menu.Item>
-                  <Menu.Item key="menu_modifier">Modifier Euler's Method</Menu.Item>
-                </SubMenu>
+
               </Menu>
         
             <Content style={{ padding: 24, margin: 0, minHeight: 280, }}>
@@ -98,8 +98,15 @@ class App extends Component{
 
               <Route path="/cramer" component={cramer} />
 
+              <Route path="/compositesimpson" component={compositesimpson} />
+              <Route path="/compositetrapzoidal" component={compositetrapzoidal} />
+
               <Route path="/Backwardh" component={Backwardh} />
               <Route path="/Backwardh2" component={Backwardh2} />
+              <Route path="/centralh" component={Central} />
+              <Route path="/centralh4" component={Central4} />
+              <Route path="/forwardh" component={forwardh} />
+              <Route path="/forwardh2" component={forwardh2} />
 
             </Content>
          
